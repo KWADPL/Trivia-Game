@@ -1,0 +1,36 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/002/383/548/non_2x/abstract-liquid-pink-background-free-vector.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container{
+    background: white;
+    border-radius: 30%;
+    width: 90%;
+    text-align: center;
+    border: pink solid 2px;
+    padding: 20px;
+  }
+  
+  button{
+    padding: 10px;
+    margin: 10px;
+    background-color: pink;
+    color: white;
+    border: solid salmon 1px;
+    border-radius: 30%;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: palevioletred;
+    transition: 0.2s;
+  }
+  #result{
+    margin-top: 10px;
+    font-weight: 10px;
+    font-size:20px;
+    color:palevioletred;
+  }

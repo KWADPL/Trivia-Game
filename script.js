@@ -1,25 +1,40 @@
-const question = "What planet is know as the 'Red Planet'?";
-const choices = ["Earth", "Mars", "Jupiter", "Saturn"];
-const correctAnswer = "Mars";
-function checkAnswer(button){
-  if(button.value === correctAnswer){
-  const match = document.getElementById("result");
-  match.innerHTML = result;
-  console.log("Correct!");
-  }else{
-    document.getElementById("result").innerHTML = "Wrong!";
-  }
-  for(let i = 1; i <5; i++){
-  document.getElementById(`choice${i}`).disabled = true;
+const questions = [
+    "What's the capital of France?", 
+    "Who painted the Mona Lisa?"
+];
+
+const choicesArray = [
+    ["Paris", "London", "Berlin", "Madrid"], 
+    ["Van Gogh", "Picasso", "Da Vinci", "Rembrandt"]
+];
+
+const correctAnswers = ["Paris", "Da Vinci"];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function displayQuestion() {
+    if (currentQuestionIndex < questions.length) {
+        document.getElementById('question').innerHTML = questions[currentQuestionIndex];
+        for (let i = 0; i < 4; i++) {
+            const btn = document.getElementById(`choice${i+1}`);
+            btn.innerHTML = choicesArray[currentQuestionIndex][i];
+            btn.value = choicesArray[currentQuestionIndex][i];
+        }
+      } else {
+    document.getElementById('result').innerHTML =
+      `You scored ${score} out of ${questions.length}!`;
+      document.getElementById('question').innerHTML = "";
+      document.getElementById('choices').innerHTML = "";
   }
 }
-function displayQuestion(){
-  const select = document.getElementById("question");
-  select.innerHTML = question;
-  for(let i=0; i < 4; i++){
-    const btn = document.getElementById(`choice${i+1}`);
-    btn.innerHTML = choices[i];
-    btn.value = choices[i];
-  }
+
+function checkAnswer(btn) {
+    if (btn.value === correctAnswers[currentQuestionIndex]) {
+        score++;
+    }
+    currentQuestionIndex++;
+    displayQuestion();
 }
+
 displayQuestion();
